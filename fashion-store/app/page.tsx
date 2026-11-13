@@ -40,7 +40,7 @@ export default function Home() {
   ];
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/products")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`)
       .then((response) => {
         if (!response.ok) throw new Error("Could not load products");
         return response.json();
@@ -108,7 +108,7 @@ export default function Home() {
   event.preventDefault();
 
   try {
-    const response = await fetch("http://127.0.0.1:8000/orders", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/orders`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
