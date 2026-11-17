@@ -25,6 +25,7 @@ export default function Home() {
   const [checkout, setCheckout] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [notification, setNotification] = useState("");
   const [customer, setCustomer] = useState({
     name: "",
     email: "",
@@ -84,6 +85,8 @@ export default function Home() {
 
       return [...current, { product, quantity: 1 }];
     });
+    setNotification(`${product.name} added to bag!`);
+    setTimeout(() => setNotification(""), 2500);
   }
 
   function changeQuantity(productId: number, change: number) {
@@ -139,6 +142,11 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#faf9f6] text-[#24231f]">
+    {notification && (
+  <div className="fixed top-6 right-6 z-50 rounded-lg bg-[#262720] px-5 py-3 text-white shadow-lg border border-[#a17c53]">
+    {notification}
+  </div>
+)}
       <div className="bg-[#262720] px-4 py-2 text-center text-xs tracking-[0.18em] text-white">
         COMPLIMENTARY SHIPPING ON ORDERS OVER ₹2,499
       </div>
