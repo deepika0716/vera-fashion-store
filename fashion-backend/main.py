@@ -19,14 +19,16 @@ app.add_middleware(
 
 # MySQL connection
 
+
 def get_connection():
     return mysql.connector.connect(
         host=os.getenv("MYSQLHOST"),
         user=os.getenv("MYSQLUSER"),
         password=os.getenv("MYSQLPASSWORD") or os.getenv("MYSQL_PASSWORD"),
         database=os.getenv("MYSQLDATABASE"),
-        port=int(os.getenv("MYSQLPORT", "3306"))
+        port=3306
     )
+
 
 
 
